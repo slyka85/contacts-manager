@@ -13,7 +13,13 @@ $(function() {
   var $circleManu = $("#navs")
   var $template = $('script[data-id="contactsTemplate"]').text();
   var $templateCat = $('script[data-id="categoriesTemplate"]').text();
-  /////////////////////////////////////////////////////////////
+  var ul = $("#navs"),
+    li = $("#navs li"),
+    i = li.length,
+    n = i - 1,
+    r = 120;
+  ul.click(openMenu);
+  ////////////////////////////////////////////////////////////////
   function home() {
       $dynamicDiv.empty();
       var str = "Welcome to Contact Manager!";
@@ -23,8 +29,8 @@ $(function() {
       });
       $dynamicDiv.hide().show("slow");
       $dynamicDiv.append($home);
-    }
-    ////////////////////////////////////////////////////////////
+    } // end of home function
+    //////////////////////////////////////////////////////////////
   function showContacts() {
       $dynamicDiv.empty();
       $dynamicDiv.hide().show("slow");
@@ -51,7 +57,7 @@ $(function() {
       $('tbody').on('click', '[data-action="saveContact"]', saveContact);
       $('tbody').on('click', '[data-action="deleteContact"]', deleteContact);
     } //end of showContacts function
-    /////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////
   function showCategories() {
       $dynamicDiv.empty();
       $dynamicDiv.hide().show("slow");
@@ -71,13 +77,13 @@ $(function() {
       $tbodyCat.on('click', '[data-action="saveCategory"]', saveCategory);
       $tbodyCat.on('click', '[data-action="deleteCategory"]', deleteCategory);
     } //end of showCategories function
-    /////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////
   function about() {
       $dynamicDiv.empty();
       $dynamicDiv.hide().show("slow");
       $dynamicDiv.append($about);
-    }
-    ////////////////////////////////////////////////////////////
+    } //end of about function
+    //////////////////////////////////////////////////////////////
   function deleteCategory(event) {
       var row = $(event.target).parents('tr');
       var id = row.attr('data-id');
@@ -97,7 +103,7 @@ $(function() {
           })
         }) //end of done
     } //end of deleteCategory function
-    /////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////
   function createCategory(e) {
       $('html, body').animate({
         scrollTop: $(document).height()
@@ -119,7 +125,7 @@ $(function() {
           $tbodyCat.append(html);
         }) //end of done POST
     } //end of createCategory function
-    ////////////////////////////////////////////////////////////////////  
+    //////////////////////////////////////////////////////////////
   function saveCategory(e) {
       var row = $(e.target).parents('tr');
       var id = row.attr('data-id');
@@ -139,7 +145,7 @@ $(function() {
       });
       $(this).hide().show("slow");
     } //end of saveCategory function
-    ///////////////////////////////////////////////////////////// 
+    //////////////////////////////////////////////////////////////
   function deleteContact(event) {
       var row = $(event.target).parents('tr');
       var thisID = row.attr('data-id');
@@ -159,7 +165,7 @@ $(function() {
           })
         }) //end of done
     } //end of deleteContact function
-    /////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////
   function saveContact(e) {
       var row = $(e.target).parents('tr');
       var id = row.attr('data-id');
@@ -187,7 +193,7 @@ $(function() {
       });
       $(this).hide().show("slow");
     } //end of saveContact function
-    /////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////
   function createContact(e) {
       $('html, body').animate({
         scrollTop: $(document).height()
@@ -223,14 +229,7 @@ $(function() {
           }); //end of done categories
         }) //end of done POST
     } //end of createContact function
-    ////////////////////////////////////////////////////////////////////   
-  var ul = $("#navs"),
-    li = $("#navs li"),
-    i = li.length,
-    n = i - 1,
-    r = 120;
-  ul.click(openMenu);
-  //////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////  
   function openMenu() {
       $(this).toggleClass('active');
       if ($(this).hasClass('active')) {
@@ -245,7 +244,7 @@ $(function() {
       } else {
         li.removeAttr('style');
       }
-    }
+    } //end of openMenu
     ///////////////////////////////////////////////////////////////
   String.prototype.escapeSpecialChars = function() {
     return this.replace(/\\n/g, "")
@@ -258,7 +257,7 @@ $(function() {
       .replace(/\\f/g, "\\f")
       // .replace(/ /g, "")
   };
-  ////////////////////////      ROUTER      //////////////////
+  ////////////////////////      ROUTER      /////////////////////
   var routes = {
     "/": home,
     "/contacts": showContacts,
@@ -268,4 +267,4 @@ $(function() {
   var router = Router(routes);
   router.init();
 });
-////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////

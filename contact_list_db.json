@@ -25,7 +25,7 @@
     {
       "contactName": "JOHN SMITH",
       "phone": "(347)264-5646",
-      "email": "JOHN@MAIL.COM",
+      "email": "JOHN@MAIL.CO",
       "city": "BROOKLYN",
       "categorieId": 1,
       "id": 1
@@ -37,14 +37,6 @@
       "city": "ASTORIA",
       "categorieId": 2,
       "id": 2
-    },
-    {
-      "contactName": "VALERIE SMITH",
-      "phone": "(347) 819-8934",
-      "email": "VALERIE@MAIL.COM",
-      "city": "Brooklyn",
-      "categorieId": 5,
-      "id": 3
     }
   ]
 }
