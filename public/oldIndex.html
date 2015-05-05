@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+   <head>
+      <meta charset="UTF-8" />
+      <!--     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+         <meta name="viewport" content="width=device-width, initial-scale=1.0">  -->
+      <title>Contacts</title>
+      <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" type="text/css" href="/bower_components/semantic-ui/dist/semantic.css">
+      <link rel="stylesheet" type="text/css" href="/style.css">
+   </head>
+   <body>
+      <div class="container">
+     
+         <header>
+            <h1>CONTACT MANAGER </h1>
+            <h6>All contacts in one place</h6>
+            <nav class="navMenu">
+               <a data-action = "home" href="#/">HOME</a>
+               <a data-action = "contacts" href="#/contacts">ALL CONTACTS</a>
+               <a data-action = "categories" href="#/categories">CATEGORIES</a>
+               <a data-action = "about" href="#/about">ABOUT</a>
+            </nav>
+            </header>
+     
+            <div class = "dynamic">
+
+  
+               <div class = "welcome">
+                  <section>
+                     <p>Welcome to Contact Manager! </p>
+                     <p> The application that will store and organize your contacts. You can add new categories and contacts and edit or delete existing ones. </p>
+                     <img src = "http://i.imgur.com/NTLzcIK.png">
+                  </section>
+
+
+         </div> <!-- end of welcome  -->
+
+
+         <div class = "about">
+         <h2> Hi! I'm panda! And this ball is mine </h2>
+    
+          <img src ="http://www.ohmagif.com/wp-content/uploads/2012/12/cute-panda-playing-with-ball.gif">
+            <h5> Visit me on <a href="#"> GitHub </a> </h5>
+         </div>
+
+
+
+     <!--     <script type="text/template" data-id="headerTemplate"> -->
+
+         <div class = "contactsTableHeader">
+                   <main class="ui page grid">
+                <section class="eight column wide centered">
+                  <h2>FULL CONTACTS LIST</h2>
+                  <table class="hovertable">
+                  <thead>
+                      <th>NAME</th>
+                      <th>PHONE NUMBER</th>
+                      <th>EMAIL ADDRESS</th>
+                      <th>CITY</th>
+                      <th>CATEGORY</th>
+                      <th>EDIT / DELETE</th>
+                    </thead> 
+                    <tbody>
+                    </tbody>
+                   </table>
+      </section>
+      </main>
+      </div>
+          </div> <!-- end of dynamic -->
+  <!--     </script> -->
+                  
+    <script type="text/template" data-id="contactsTemplate">
+    <!--   <tbody data-id ="contactsTable"> -->
+               <tr data-id='{{id}}'>
+                  <td data-attr='name' contenteditable='true' onmouseover="this.style.color='white';" onmouseout="this.style.color='brown';">
+              
+                    {{name}}
+                  </td>
+              
+                <td data-attr='phone' contenteditable='true' onmouseover="this.style.color='white';" onmouseout="this.style.color='brown';">
+                    {{phone}}
+                  </td>
+                      <td data-attr='email' contenteditable='true' onmouseover="this.style.color='white';" onmouseout="this.style.color='brown';">
+                    {{email}}
+                  </td>
+                      <td data-attr='city' contenteditable='true' onmouseover="this.style.color='white';" onmouseout="this.style.color='brown';">
+                    {{city}}
+                  </td>
+              
+      
+                      <td data-attr='category' contenteditable='true' onmouseover="this.style.color='white';" onmouseout="this.style.color='brown';">
+                    {{categorieId}}
+                  </td>
+                      <td>
+                    <button data-action='saveContact' class='ui button small green'><i class="checkmark icon"></i></button>
+                    <button data-action='deleteContact' class='ui button small red'><i class="remove icon"></i></button>
+                  </td>
+             
+                 </tr>
+
+           <!--          </tbody>  --> 
+                     <a class="ui label grey">
+                    <i class="plus icon"></i> Add new...
+                  </a>    
+              
+         </script>
+
+
+
+
+        <script type="text/template" data-id="categoriesTemplate">
+            <div data-id="table">
+              <div id="tableHeader">
+                   <main class="ui page grid">
+                    <section class="eight column wide centered">
+                     <h2>CATEGORIES LIST</h2>
+                      <table class="hovertable">
+                        <thead>
+                          <th>CATEGORY</th>
+                          <th>EDIT / DELETE</th>
+                      </thead> 
+              </div> <!-- end of table header -->
+                 <tbody data-id ="categoriesTable">
+                    <tr data-id='{{id}}'>
+                      <td data-attr='categoryName' contenteditable='true' onmouseover="this.style.color='white';" onmouseout="this.style.color='brown';">
+                    {{name}}
+                  </td>
+                      <td>
+                    <button data-action='save' class='ui button small green'><i class="checkmark icon"></i></button>
+                    <button data-action='delete' class='ui button small red'><i class="remove icon"></i></button>
+                  </td>
+             
+                 </tr>
+                    </tbody>
+                  </table>
+              
+            
+                  <a class="ui label grey">
+                    <i class="plus icon"></i> Add new...
+                  </a>
+                </section>
+              </main>
+             </div> <!-- end of table  -->
+         </script>
+
+
+
+
+
+
+
+
+     </div><!-- /container -->
+      <script src="https://rawgit.com/flatiron/director/master/build/director.min.js"></script>
+      <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
+      <script type="text/javascript" src="/bower_components/mustache/mustache.js"></script>
+      <script type="text/javascript" src="/app.js"></script>
+   </body>
+</html>

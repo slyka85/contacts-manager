@@ -1,0 +1,30 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'node', '/usr/local/bin/npm', 'install', '.' ]
+2 info using npm@2.5.1
+3 info using node@v0.12.0
+4 verbose node symlink /usr/local/bin/node
+5 warn package.json bookie@0.0.0 No description
+6 warn package.json bookie@0.0.0 No repository field.
+7 warn package.json bookie@0.0.0 No README data
+8 silly cache add args [ '.', null ]
+9 verbose cache add spec .
+10 silly cache add parsed spec { raw: '.',
+10 silly cache add   scope: null,
+10 silly cache add   name: null,
+10 silly cache add   rawSpec: '.',
+10 silly cache add   spec: '/Users/anechka/dev/projects/projectTwo/Contactical/public',
+10 silly cache add   type: 'local' }
+11 error addLocal Could not install /Users/anechka/dev/projects/projectTwo/Contactical/public
+12 verbose stack Error: EISDIR, read
+12 verbose stack     at Error (native)
+13 verbose cwd /Users/anechka/dev/projects/projectTwo/Contactical/public
+14 error Darwin 14.3.0
+15 error argv "node" "/usr/local/bin/npm" "install" "."
+16 error node v0.12.0
+17 error npm  v2.5.1
+18 error code EISDIR
+19 error errno -21
+20 error EISDIR, read
+21 error If you need help, you may report this error at:
+21 error     <http://github.com/npm/npm/issues>
+22 verbose exit [ -21, true ]

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+   <head>
+      <meta charset="UTF-8" />
+      <title>Contacts</title>
+      <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+      <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+      <link rel="stylesheet" type="text/css" href="/bower_components/semantic-ui/dist/semantic.css">
+      <link rel="stylesheet" type="text/css" href="/style.css">
+   </head>
+   <body>
+      <div class="container">
+         <header>
+         <div class ="logo">
+                    <h1 id="hone">CONTACT MANAGER </h1>
+         <img src="http://fusion.com/wp-content/uploads/2014/01/handshake-icon-v2.png">
+            </div>
+            <h5>All contacts in one place</h5>
+            <nav class="navMenu">
+               <a data-action = "home" href="#/">HOME</a>
+               <a data-action = "contacts" href="#/contacts">ALL CONTACTS</a>
+               <a data-action = "categories" href="#/categories">CATEGORIES</a>
+               <a data-action = "about" href="#/about">ABOUT</a>
+            </nav>
+            </header>
+
+              <ul id="navs" data-open="-" data-close="+">
+              <li><a data-action = "showCategories" href="#/categories">Business</a></li>
+              <li><a href="#">Family</a></li>
+              <li><a href="#">Friends</a></li>
+              <li><a href="#">Work</a></li>
+            </ul>
+     
+            <div class = "dynamic">
+               <div class = "welcome">
+                  <section class="welcomeSection">
+                     <h5> The application that will store and organize your contacts. You can add new categories and contacts and edit or delete existing ones. </h5>
+                     <img src = "http://i.imgur.com/NTLzcIK.png">
+                  </section>
+                </div> <!-- end of welcome  -->
+
+
+               <div class = "about">
+              <h2> GOT WHISKAS? </h2>
+             <img src = "http://media0.giphy.com/media/12hNWZe9HHFO80/giphy.gif">
+               <h5> Visit me on <a href="#"> GitHub </a> </h5>
+               </div> <!-- end of about  -->
+
+              <div class = "contacts">
+                <section class ="tableSection">
+                  <h3>YOUR CONTACTS LIST</h3>
+                  <table class="hovertable">
+                  <thead>
+                      <th>NAME</th>
+                      <th>PHONE NUMBER</th>
+                      <th>EMAIL ADDRESS</th>
+                      <th>CITY</th>
+                      <th>CATEGORY</th>
+                      <th>EDIT / DELETE</th>
+                    </thead> 
+                    <tbody id ="contactsTBody">
+                    </tbody>
+                   </table>
+                        <a data-action='createContact' class="ui label black">
+                    <i class="plus icon"></i> ADD CONTACT
+                  </a>  
+             </section>
+  
+              <script type="text/template" data-id="contactsTemplate">
+               <tr data-id='{{id}}' class ="toDrag">
+                  <td data-attr='contactName' contenteditable='true' onmouseover="this.style.color='white';" onmouseout="this.style.color='pink';">
+                    {{contactName}}
+                  </td>
+                <td data-attr='phone' contenteditable='true' onmouseover="this.style.color='white';" onmouseout="this.style.color='pink';">
+                    {{phone}}
+                  </td>
+                      <td data-attr='email' contenteditable='true' onmouseover="this.style.color='white';" onmouseout="this.style.color='pink';">
+                    {{email}}
+                  </td>
+                      <td data-attr='city' contenteditable='true' onmouseover="this.style.color='white';" onmouseout="this.style.color='pink';">
+                    {{city}}
+                  </td>
+                  <td>
+                  <select class ="chosenCat" id="categoryOption">
+                    <option value='{{id}}'>CHOOSE A CATEGORY</option>
+                    {{#categories}}
+                    <option value='{{id}}'>{{categoryName}}</option>
+                    {{/categories}}
+                </select>   
+                </td>
+                      <td>
+                    <button data-action='saveContact' class='ui button small green'><i class="checkmark icon"></i></button>
+                    <button data-action='deleteContact' class='ui button small red'><i class="remove icon"></i></button>
+                  </td>
+                 </tr>
+                   </script>
+              </div> <!-- end of contacts -->
+              
+
+              <div class = "categories">
+                <section id ="tableSectionCategories">
+                  <h3>CATEGORIES LIST</h3>
+                  <table class="hovertable">
+                  <thead>
+                      <th>ID</th>
+                      <th>NAME</th>
+                      <th>EDIT / DELETE</th>
+                    </thead> 
+                    <tbody id ="categoriesTBody">
+                    </tbody>
+                   </table>
+                        <a data-action='createCategory' class="ui label black">
+                    <i class="plus icon"></i> ADD CATEGORY
+                  </a>  
+             </section>
+
+                <script type="text/template" data-id="categoriesTemplate">
+               <tr data-id='{{id}}' data-name='{{categoryName}}'>
+                <td data-attr='categorieId' contenteditable='true' onmouseover="this.style.color='white';" onmouseout="this.style.color='pink';">
+                    {{id}}
+                  </td>
+                  <td data-attr='categoryName' contenteditable='true' onmouseover="this.style.color='white';" onmouseout="this.style.color='pink';">
+                    {{categoryName}}
+                      <td>
+                    <button data-action='saveCategory' class='ui button small green'><i class="checkmark icon"></i></button>
+                    <button data-action='deleteCategory' class='ui button small red'><i class="remove icon"></i></button>
+                  </td>
+                 </tr>
+                   </script>
+
+              </div> <!-- end of categories -->
+
+          </div> <!-- end of dynamic -->
+     </div><!-- /container -->
+
+  
+      <script type="text/javascript" src="/bower_components/jquery/dist/jquery.js"></script>
+      <script type="text/javascript" src="/bower_components/mustache/mustache.js"></script>
+      <script src="https://rawgit.com/flatiron/director/master/build/director.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.js"></script>
+      <script type="text/javascript" src="/app.js"></script>
+   </body>
+</html>

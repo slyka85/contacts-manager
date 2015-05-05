@@ -1,0 +1,179 @@
+
+body {
+	font-family: 'Lato', sans-serif;
+	background:url("http://teeroots.com/wp-content/uploads/2015/02/colorful-background.jpg") no-repeat center center fixed;
+  background-size:cover;
+  background-size: 100% 100%;
+  background-repeat: repeat-x;
+}
+.navMenu {
+	padding-top: 1em;
+	font-size: 0.9em;
+}
+.navMenu a {
+	text-decoration: none;
+	outline: none;
+	display: inline-block;
+	margin: 0.5em;
+	padding: 0.7em 1.1em;
+	border: 3px solid black;
+	color: black;
+	font-weight: 700;
+}
+.navMenu a:hover {
+	background: rgb(71, 209, 209);
+	opacity: 0.9;
+}
+.welcome, .about, .contacts {
+		margin: 10px 0 0 0;
+	text-align: center;
+}
+.container {
+	background-size: cover;
+}
+.container > header, .dynamic {
+		margin: 20px 0 0 0;
+	padding: 2em;
+	text-align: center;
+}
+.container > header h1 {
+	color: rgba(255, 51, 0, 0.7);
+	font-size: 2.625em;
+	line-height: 1;
+	margin: 0;
+	font-weight: 300;
+}
+h3 {
+	color: green;
+}
+.container > header span {
+	display: block;
+	font-size: 60%;
+	opacity: 0.7;
+	padding: 0 0 0.6em 0.1em;
+}
+.container > section {
+	padding: 2em;
+	font-size: 1.4em;
+	max-width: 50em;
+}
+/*.tableSection {
+margin: 7px 200px 0 200px;
+}*/
+.welcomeSection {
+	margin: 7px 300px 0 300px;
+}
+.container > section p {
+	padding: 0.8em 0;
+	text-align: justify;
+	opacity: 0.5;
+	font-weight: 300;
+	line-height: 1.4;
+}
+.welcome img {
+	height: 370px;
+	margin-top: 30px;
+}
+.logo img {
+  position: relative;
+  margin-left: -435px;
+  margin-top: -33px;
+  width: 75px;
+  height: 60px;
+}
+
+.logo h1 {
+  position: relative;
+/*    float: right;*/
+  top: 18px;
+  left: 10px;
+}
+
+table.hovertable {
+	width: 100%;
+  color: white;
+  font-family: verdana,arial,sans-serif;
+  font-size:11px;
+  border-width: 1px;
+  border-color: #999999;
+  border-collapse: collapse;
+}
+table.hovertable th {
+  color: white;
+  background-color: rgba(255, 0, 102, 0.5);
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #a9c6c9;
+}
+table.hovertable tr {
+  background-color:rgba(0,0,0,.5);
+}
+table.hovertable td {
+  border-width: 1px;
+  padding: 8px;
+  border-style: solid;
+  border-color: #a9c6c9;
+}
+.ui.button.small.green {
+	background: rgb(71, 209, 209);
+}
+.ui.button.small.red {
+	background: rgba(255, 0, 102, 0.5);
+}
+#navs {
+  position: fixed;
+  left: 4px;
+  bottom: 4px;
+  width: 63px;
+  height: 59px;
+  line-height: 52px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+  cursor: pointer;
+}
+#navs {
+	font-size: 26px;
+}
+#navs>li,
+#navs:after {
+  position: absolute;
+  left: 5px;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+ background-color: rgba(184, 0, 92, 0.9);
+}
+#navs>li {
+  transition: all .6s;
+  -webkit-transition: all .6s;
+  -moz-transition: .6s;
+    background-color: rgb(51, 0, 102)
+}
+#navs li:hover {
+	background-color: rgba(0, 102, 102, 0.8)
+}
+#navs:after {
+  content: attr(data-close);
+  z-index: 1;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+}
+#navs.active:after { content: attr(data-open); }
+#navs a {
+  width: 50px;
+  height: 40px;
+  display: inline-block;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  text-decoration: none;
+  color: #fff;
+  font-size: 11px;
+  line-height: 47px;
+  /*font-size: 0.8em;*/
+}
