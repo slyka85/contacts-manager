@@ -13,21 +13,18 @@ $(function() {
   var $circleManu = $("#navs")
   var $template = $('script[data-id="contactsTemplate"]').text();
   var $templateCat = $('script[data-id="categoriesTemplate"]').text();
-
-
   /////////////////////////////////////////////////////////////
   function home() {
-    $dynamicDiv.empty();
-    var str = "Welcome to Contact Manager!";
-    var spans = '<span>' + str.split(/\s+/).join(' </span><span>') + '</span>';
-    $(spans).hide().appendTo($dynamicDiv).each(function(i) {
-      $(this).delay(1000 * i).fadeIn();
-    });
-    $dynamicDiv.hide().show("slow");
-    $dynamicDiv.append($home);
-
-  }
-  ////////////////////////////////////////////////////////////
+      $dynamicDiv.empty();
+      var str = "Welcome to Contact Manager!";
+      var spans = '<span>' + str.split(/\s+/).join(' </span><span>') + '</span>';
+      $(spans).hide().appendTo($dynamicDiv).each(function(i) {
+        $(this).delay(1000 * i).fadeIn();
+      });
+      $dynamicDiv.hide().show("slow");
+      $dynamicDiv.append($home);
+    }
+    ////////////////////////////////////////////////////////////
   function showContacts() {
       $dynamicDiv.empty();
       $dynamicDiv.hide().show("slow");
@@ -49,12 +46,12 @@ $(function() {
           } //end of if
         }); //end of done categories
       }); //end of done contacts
-     // $("#contactsTBody").sortable();
+      // $("#contactsTBody").sortable();
       $('section').on('click', '[data-action="createContact"]', createContact);
       $('tbody').on('click', '[data-action="saveContact"]', saveContact);
       $('tbody').on('click', '[data-action="deleteContact"]', deleteContact);
     } //end of showContacts function
-  /////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////
   function showCategories() {
       $dynamicDiv.empty();
       $dynamicDiv.hide().show("slow");
@@ -68,24 +65,21 @@ $(function() {
         })
         if ($tbodyCat.children().length == 0) {
           $tbodyCat.append(categoryEls);
-          console.log(categoryEls);
-          //console.log($tbodyCat);
         }
       });
       $('section').on('click', '[data-action="createCategory"]', createCategory);
       $tbodyCat.on('click', '[data-action="saveCategory"]', saveCategory);
       $tbodyCat.on('click', '[data-action="deleteCategory"]', deleteCategory);
     } //end of showCategories function
-  /////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////
   function about() {
-    $dynamicDiv.empty();
-    $dynamicDiv.hide().show("slow");
-    $dynamicDiv.append($about);
-  }
-  ////////////////////////////////////////////////////////////
+      $dynamicDiv.empty();
+      $dynamicDiv.hide().show("slow");
+      $dynamicDiv.append($about);
+    }
+    ////////////////////////////////////////////////////////////
   function deleteCategory(event) {
       var row = $(event.target).parents('tr');
-      console.log(row);
       var id = row.attr('data-id');
       var url = '/categories/' + id;
       $.ajax({
@@ -98,21 +92,21 @@ $(function() {
             }, 300);
           },
         }).done(function(data) {
-          console.log(data);
           row.children().slideUp(300, function() {
             row.remove();
           })
         }) //end of done
     } //end of deleteCategory function
-  /////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////
   function createCategory(e) {
+      $('html, body').animate({
+        scrollTop: $(document).height()
+      }, 'slow');
       var row = $(e.target).parents('tr');
       var id = row.attr('data-id');
-      var categoryName = row.find('[data-attr="categoryName"]').text();
-     // var contactsQuantity = row.find('[data-attr="contactsQuantity"]').text();
+      var categoryName = row.find('[data-attr="categoryName"]').text().trim();
       var categoryInfo = JSON.stringify({
         categoryName: categoryName,
-        //contactsQuantity: parseInt(contactsQuantity),
       });
       var myEscapedJSONString = categoryInfo.escapeSpecialChars();
       $.ajax({
@@ -125,15 +119,13 @@ $(function() {
           $tbodyCat.append(html);
         }) //end of done POST
     } //end of createCategory function
-  ////////////////////////////////////////////////////////////////////  
+    ////////////////////////////////////////////////////////////////////  
   function saveCategory(e) {
       var row = $(e.target).parents('tr');
       var id = row.attr('data-id');
-      var categoryName = row.find('[data-attr="categoryName"]').text();
-      //var contactsQuantity = row.find('[data-attr="contactsQuantity"]').text();
+      var categoryName = row.find('[data-attr="categoryName"]').text().trim();
       var categoryInfo = JSON.stringify({
         categoryName: categoryName,
-       // contactsQuantity: contactsQuantity,
       });
       var myEscapedJSONString = categoryInfo.escapeSpecialChars();
       $.ajax({
@@ -141,20 +133,15 @@ $(function() {
           url: "/categories/" + id,
           data: myEscapedJSONString,
           contentType: 'application/json'
-        }).done(function(data) {
-          console.log(data);
-          // for( index in data){
-          $("#categoryOption select").append('<option> hi </option>');
-          console.log(data);
-          console.log(data.categoryName);
-        }) //end of done
-      $(this).css({background: 'grey'});
+        }).done(function(data) {}) //end of done
+      $(this).css({
+        background: 'grey'
+      });
       $(this).hide().show("slow");
     } //end of saveCategory function
-  ///////////////////////////////////////////////////////////// 
+    ///////////////////////////////////////////////////////////// 
   function deleteContact(event) {
       var row = $(event.target).parents('tr');
-      console.log(row);
       var thisID = row.attr('data-id');
       var url = '/contacts/' + thisID;
       $.ajax({
@@ -162,7 +149,9 @@ $(function() {
           url: url,
           contentType: 'application/json',
           beforeSend: function() {
-            row.children().animate({'backgroundColor': '#CC0066'}, 300);
+            row.children().animate({
+              'backgroundColor': '#CC0066'
+            }, 300);
           },
         }).done(function() {
           row.children().slideUp(300, function() {
@@ -170,7 +159,7 @@ $(function() {
           })
         }) //end of done
     } //end of deleteContact function
-  /////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////
   function saveContact(e) {
       var row = $(e.target).parents('tr');
       var id = row.attr('data-id');
@@ -178,7 +167,6 @@ $(function() {
       var contactPhone = row.find('[data-attr="phone"]').text().trim();
       var contactEmail = row.find('[data-attr="email"]').text().trim();
       var contactCity = row.find('[data-attr="city"]').text().trim();
-      // var contactCategory = row.find('[data-attr="category"]').text();
       var contactCategory = row.find('.chosenCat').val();
       var contactInfo = JSON.stringify({
         contactName: contactName,
@@ -199,8 +187,11 @@ $(function() {
       });
       $(this).hide().show("slow");
     } //end of saveContact function
-  /////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////
   function createContact(e) {
+      $('html, body').animate({
+        scrollTop: $(document).height()
+      }, 'slow');
       var row = $(e.target).parents('tr');
       var id = row.attr('data-id');
       var contactName = row.find('[data-attr="contactName"]').text().trim();
@@ -208,7 +199,6 @@ $(function() {
       var contactEmail = row.find('[data-attr="email"]').text().trim();
       var contactCity = row.find('[data-attr="city"]').text().trim();
       var contactCategory = row.find('.chosenCat').val();
-      // var contactCategory = row.find('[data-attr="category"]').text();
       var contactInfo = JSON.stringify({
         contactName: contactName,
         phone: contactPhone,
@@ -233,30 +223,30 @@ $(function() {
           }); //end of done categories
         }) //end of done POST
     } //end of createContact function
-  ////////////////////////////////////////////////////////////////////   
+    ////////////////////////////////////////////////////////////////////   
   var ul = $("#navs"),
     li = $("#navs li"),
     i = li.length,
     n = i - 1,
     r = 120;
   ul.click(openMenu);
-//////////////////////////////////////////////////////////////////////
+  //////////////////////////////////////////////////////////////////////
   function openMenu() {
-    $(this).toggleClass('active');
-    if ($(this).hasClass('active')) {
-      for (var a = 0; a < i; a++) {
-        li.eq(a).css({
-          'transition-delay': "" + (50 * a) + "ms",
-          '-webkit-transition-delay': "" + (50 * a) + "ms",
-          'left': (r * Math.cos(90 / n * a * (Math.PI / 180))),
-          'top': (-r * Math.sin(90 / n * a * (Math.PI / 180)))
-        });
-      } //end of loop
-    } else {
-      li.removeAttr('style');
+      $(this).toggleClass('active');
+      if ($(this).hasClass('active')) {
+        for (var a = 0; a < i; a++) {
+          li.eq(a).css({
+            'transition-delay': "" + (50 * a) + "ms",
+            '-webkit-transition-delay': "" + (50 * a) + "ms",
+            'left': (r * Math.cos(90 / n * a * (Math.PI / 180))),
+            'top': (-r * Math.sin(90 / n * a * (Math.PI / 180)))
+          });
+        } //end of loop
+      } else {
+        li.removeAttr('style');
+      }
     }
-  }
-  ///////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////
   String.prototype.escapeSpecialChars = function() {
     return this.replace(/\\n/g, "")
       .replace(/\\'/g, "\\'")
@@ -266,7 +256,7 @@ $(function() {
       .replace(/\\t/g, "\\t")
       .replace(/\\b/g, "\\b")
       .replace(/\\f/g, "\\f")
-     // .replace(/ /g, "")
+      // .replace(/ /g, "")
   };
   ////////////////////////      ROUTER      //////////////////
   var routes = {
