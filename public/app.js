@@ -25,6 +25,7 @@ $(function() {
     });
     $dynamicDiv.hide().show("slow");
     $dynamicDiv.append($home);
+
   }
   ////////////////////////////////////////////////////////////
   function showContacts() {
